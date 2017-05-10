@@ -1,0 +1,9 @@
+build/
+logs/
+*.o
+simplesamplemqttAssembly.txt
+simplesamplemqttObjDump.txt
+GPATH
+GRTAGS
+GTAGS
+sdkconfig

@@ -1,0 +1,27 @@
+{
+	"C_Cpp.clang_format_path": "C:/Program Files/LLVM/bin/clang-format.exe",
+	"C_Cpp.clang_format_style": "Visual Studio",
+	"C_Cpp.clang_format_formatOnSave": true,
+	"[cpp]": {
+		"editor.quickSuggestions": true
+	},
+	"[c]": {
+		"editor.quickSuggestions": true
+	},
+	"editor.formatOnSave": true,
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"editor.wordWrap": "on",
+	"files.trimTrailingWhitespace": true,
+	"files.associations": {
+		"thread": "cpp",
+		"array": "cpp",
+		"initializer_list": "cpp",
+		"utility": "cpp",
+		"system_error": "cpp",
+		"functional": "cpp",
+		"type_traits": "cpp",
+		"tuple": "cpp"
+	}
+}

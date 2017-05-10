@@ -1,0 +1,42 @@
+{
+	"configurations": [
+		{
+			"name": "Linux",
+			"includePath": [
+				"/home/user/esp-idf/components/",
+				"/home/user/esp-idf/components/log/include",
+				"/home/user/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/5.2.0/include",
+				"/home/user/xtensa-esp32-elf/xtensa-esp32-elf/include/c++/5.2.0"
+			],
+			"browse": {
+				"limitSymbolsToIncludedHeaders": true,
+				"databaseFilename": "",
+				"path": [
+					"/home/user/esp-idf/components/",
+					"/home/user/esp-idf/components/log/include",
+					"/home/user/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/5.2.0/include",
+					"/home/user/xtensa-esp32-elf/xtensa-esp32-elf/include/c++/5.2.0"
+				]
+			}
+		},
+		{
+			"name": "Win32",
+			"includePath": [
+				"C:/IoT/esp-idf/components/",
+				"C:/IoT/esp-idf/components/log/include",
+				"C:/IoT/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/5.2.0/include",
+				"C:/IoT/xtensa-esp32-elf/xtensa-esp32-elf/include/c++/5.2.0"
+			],
+			"browse": {
+				"limitSymbolsToIncludedHeaders": true,
+				"databaseFilename": "",
+				"path": [
+					"C:/IoT/esp-idf/components/",
+					"C:/IoT/esp-idf/components/log/include",
+					"C:/IoT/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/5.2.0/include",
+					"C:/IoT/xtensa-esp32-elf/xtensa-esp32-elf/include/c++/5.2.0"
+				]
+			}
+		}
+	]
+}
