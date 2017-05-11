@@ -204,7 +204,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 		{
 			memcpy(temp, buffer, size);
 			temp[size] = '\0';
-			ESP_LOGD(TAG, "message: %s", temp); //EditByFHFS
+			ESP_LOGD(TAG, "message: %s", temp);
 			EXECUTE_COMMAND_RESULT executeCommandResult =
 				EXECUTE_COMMAND(userContextCallback, temp);
 			result =

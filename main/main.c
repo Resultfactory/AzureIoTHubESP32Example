@@ -9,6 +9,8 @@
 #include "esp_log.h"
 #include "esp_system.h"
 
+#include "apps/sntp/sntp.h"
+
 #include "simplesample_mqtt.h"
 
 #define EXAMPLE_WIFI_SSID CONFIG_WIFI_SSID
@@ -23,6 +25,23 @@ static EventGroupHandle_t wifi_event_group;
    to the AP with an IP? */
 const int CONNECTED_BIT = BIT0;
 
+static void initSNTP()
+{
+	static uint8_t init = 0;
+
+	if (init == 0)
+	{
+		init = 1;
+		ESP_LOGI(TAG, "Initializing SNTP");
+		sntp_setoperatingmode(SNTP_OPMODE_POLL);
+		sntp_setservername(0, (char *)"0.nl.pool.ntp.org");
+		sntp_setservername(1, (char *)"pool.ntp.org");
+		sntp_setservername(2, (char *)"0.europe.pool.ntp.org");
+		sntp_init();
+		vTaskDelay(500 / portTICK_RATE_MS);
+	}
+}
+
 static esp_err_t event_handler(void *ctx, system_event_t *event)
 {
 	switch (event->event_id)
@@ -32,7 +51,7 @@ static esp_err_t event_handler(void *ctx, system_event_t *event)
 		break;
 	case SYSTEM_EVENT_STA_GOT_IP:
 		xEventGroupSetBits(wifi_event_group, CONNECTED_BIT);
-		logTemp();
+		initSNTP();
 		break;
 	case SYSTEM_EVENT_STA_DISCONNECTED:
 		/* This is a workaround as ESP32 WiFi libs don't currently
@@ -71,4 +90,9 @@ void app_main()
 	initialise_wifi();
 	xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT, 0, 0, portMAX_DELAY);
 	xTaskCreate(&simplesample_mqtt_run, "simplesample_mqtt_run", 8192, NULL, 5, NULL);
+	while (1)
+	{
+		vTaskDelay(60000 / portTICK_RATE_MS);
+		logTemp();
+	}
 }
