@@ -106,7 +106,7 @@ EXECUTE_COMMAND_RESULT Temp(ContosoAnemometer *device)
 		device->WifiRSSI = 0;
 	}
 
-	ESP_LOGD(TAG, "Temp: %d, Hall: %d, Heap: %d, Heap32: %d, WifiRSSI: %d",
+	ESP_LOGI(TAG, "Log Message; 'Temp: %d, Hall: %d, Heap: %d, Heap32: %d, WifiRSSI: %d'",
 			 device->Temp, device->Hall, device->Heap, device->Heap32,
 			 device->WifiRSSI);
 	if (SERIALIZE(&destination, &destinationSize, device->DeviceId,
@@ -154,8 +154,7 @@ void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void *userContextCal
 void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsigned char *buffer, size_t size)
 {
 	static unsigned int messageTrackingId;
-	IOTHUB_MESSAGE_HANDLE messageHandle =
-		IoTHubMessage_CreateFromByteArray(buffer, size);
+	IOTHUB_MESSAGE_HANDLE messageHandle = IoTHubMessage_CreateFromByteArray(buffer, size);
 	if (messageHandle == NULL)
 	{
 		ESP_LOGE(TAG, "unable to create a new IoTHubMessage");
@@ -179,8 +178,7 @@ void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsigned char
 }
 
 /*this function "links" IoTHub to the serialization library*/
-static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message,
-													  void *userContextCallback)
+static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void *userContextCallback)
 {
 	IOTHUBMESSAGE_DISPOSITION_RESULT result;
 	const unsigned char *buffer;
